@@ -1,0 +1,30 @@
+name: 'Webhook Trigger'
+description: 'Posts data to an endpoint on any event'
+inputs:
+  data:
+    description: 'Data to be posted'
+    required: true
+    default: ''
+  webhook_url:
+    description: 'Endpoint URL'
+    required: true
+    default: ''
+  options:
+    description: 'Options'
+    required: false
+    default: ''
+  user:
+    description: 'The user name and password to use for server authentication'
+    required: false
+    default: ''
+branding:
+  icon: 'at-sign'
+  color: 'gray-dark'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.data }}
+    - ${{ inputs.webhook_url }}
+    - ${{ inputs.options }}
+    - ${{ inputs.user }}
