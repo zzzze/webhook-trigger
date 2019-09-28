@@ -19,18 +19,24 @@ Sending data to trigger a github webhook event, it can trigger workflow of anoth
   uses: zzzze/webhook-trigger@master
   with:
     data: "{\"event_type\":\"build\"}"
-    webhook_url: ${{ secrets.WEBHOOK}}
-    options: "-H \"Accept: application/vnd.github.everest-preview+json\" -H \"Authorization: token ${{ secrets.TOKEN}}\""
+    webhook_url: ${{ secrets.WEBHOOK_URL }}
+    options: "-H \"Accept: application/vnd.github.everest-preview+json\" -H \"Authorization: token ${{ secrets.TOKEN }}\""
 ```
 
 ### Inputs
 
+All inputs will pass to `curl` command, so see [curl document](https://curl.haxx.se/docs/manpage.html) for more information.
+
 |  Name  |  Required  |  Default  |  Description | Example |
 | :--- | :--- | :--- | :--- | :--- |
-|  webhook_url  |  true  |  ""  |  Endpoint URL  | "https://****" |
-|  data  |  true  |  ""  |  Data to be posted  | "{\"event_type\":\"build\"}" |
-|  options |  false  |  ""  |  Options  | "-a test" |
-|  user  |  false  |  ""  |  The user name and password to use for server authentication  | "user:password" |
+|  webhook_url  |  true  |  ""  |  Endpoint URL  | `"https://****"` |
+|  data  |  true  |  ""  |  Data to be posted  | `"{\"event_type\":\"build\"}"` |
+|  options |  false  |  ""  |  Options  | `"-a foo -b bar"` |
+|  user  |  false  |  ""  |  The user name and password to use for server authentication  | `"user:password"` |
+
+With the inputs above, the action will invoke the following command finally:
+
+`curl -X POST https://**** --user user:password --data "{\"event_type\":\"build\"}" -a foo -b bar`
 
 ## Issues
 
