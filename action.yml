@@ -1,5 +1,5 @@
 name: 'Webhook Trigger'
-description: 'Posts data to an endpoint on any event'
+description: 'Supports for triggering any webhook events.'
 inputs:
   data:
     description: 'Data to be posted'
