@@ -1,4 +1,4 @@
-FROM debian:9.8-slim
+FROM debian:bullseye-slim
 
 # Install curl
 RUN apt-get update && apt-get install -y curl
